@@ -6,7 +6,6 @@ class Solution {
             int temp = arr[i], tempInxd = i;
             int l = 0, r = arr.length - 1;
             while (l <= r) {
-                //debug(l,r+"...");
                 int mid = l + (r - l) / 2;
                 if (temp + arr[mid] == target && tempInxd != mid) {
                     f = tempInxd;
@@ -15,7 +14,6 @@ class Solution {
                 if (temp + arr[mid] > target) r = mid - 1;
                 else l = mid + 1;
             }
-            //debug(l,r);
         }
         f++;
         s++;
