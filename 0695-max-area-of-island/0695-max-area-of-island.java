@@ -1,5 +1,5 @@
 class Solution {
-   public static int maxAreaOfIsland(int[][] grid) {
+   public int maxAreaOfIsland(int[][] grid) {
         int r = grid.length;
         int c = grid[0].length;
         boolean fk = false;
