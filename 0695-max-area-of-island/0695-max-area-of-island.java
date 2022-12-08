@@ -1,7 +1,6 @@
 class Solution {
         int[][] g;
         int n, m;
-
         public int maxAreaOfIsland(int[][] grid) {
             g = grid.clone();
             n = g.length;
