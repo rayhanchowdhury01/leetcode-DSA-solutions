@@ -4,7 +4,7 @@ class Solution {
         Dsu dsu = new Dsu(n);
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                if (isConnected[i][j] == 1) dsu.union(i, j);
+                if (isConnected[i][j] == 1 && i != j) dsu.union(i, j);
             }
         }
         return dsu.numberOfset;
