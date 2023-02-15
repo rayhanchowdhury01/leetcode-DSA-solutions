@@ -1,9 +1,10 @@
 class Solution {
     public int finalValueAfterOperations(String[] operations) {
-        
+    
         int res=0;
-        for(String i :operations){
-            if(i.charAt(0)=='+' ||i.charAt(2)=='+')res++;
+        for(int i=0;i<operations.length;i++){
+            String s=operations[i];
+             if(s.charAt(0)=='+' ||s.charAt(2)=='+')res++;
             else res--;
         }
         return res;
