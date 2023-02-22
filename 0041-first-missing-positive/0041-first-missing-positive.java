@@ -1,18 +1,15 @@
 class Solution {
-    public int firstMissingPositive(int[] nums) {
-        
-        int x = 100000+5;
-        int[] temp = new int[x];
-        boolean present[] = new boolean[x];
+     public int firstMissingPositive(int[] nums) {
         int maxelement = Integer.MIN_VALUE;
-        for(int i : nums){
-            if(i>=0 && i<x) present[i] = true;
-            maxelement = Math.max(i,maxelement);
+        HashSet<Integer> set = new HashSet<>();
+        for (int i : nums) {
+            set.add(i);
+            maxelement = Math.max(maxelement, i);
         }
-        
-        for(int i=1;i<x;i++){
-            if(!present[i]) return i;
+        if (maxelement < 1) return 1;
+        for (int i = 1; i <= maxelement; i++) {
+            if (!set.contains(i)) return i;
         }
-        return maxelement;
+        return maxelement + 1;
     }
 }
