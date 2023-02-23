@@ -1,38 +1,28 @@
 class Solution {
-    public int[] intersect(int[] nums1, int[] nums2) {
+    public static int[] intersect(int[] nums1, int[] nums2) {
+        Sort(nums1);
+        Sort(nums2);
+        ArrayList<Integer> lst = new ArrayList<>();
+        int i = 0, j = 0, k = 0;
+        while (i < nums1.length && j < nums2.length) {
+            if (nums1[i] < nums2[j]) i++;
+            else if (nums1[i] > nums2[j]) j++;
+            else {
+                lst.add(nums1[i]);
+                i++;
+                j++;
+            }
+        }
+        int[] res = new int[lst.size()];
+        for (int v : lst) res[k++] = v;
 
-        HashMap<Integer, Integer> set1 = new HashMap<>();
-        HashMap<Integer, Integer> set2 = new HashMap<>();
-        for (int i : nums1) {
-            if (set1.containsKey(i)) set1.put(i, set1.get(i) + 1);
-            else set1.put(i, 1);
-        }
-        for (int i : nums2) {
-            if (set2.containsKey(i)) set2.put(i, set2.get(i) + 1);
-            else set2.put(i, 1);
-        }
-        ArrayList<Integer> ans = new ArrayList<>();
-        if (nums1.length <= nums2.length) {
-            for (int i : nums1) {
-                if (set2.containsKey(i) && set2.get(i) > 0) {
-                    ans.add(i);
-                    set2.put(i, set2.get(i) - 1);
-                }
-            }
-        } else {
-            for (int i : nums2) {
-                if (set1.containsKey(i) && set1.get(i) > 0) {
-                    ans.add(i);
-                    set1.put(i, set1.get(i) - 1);
-                }
-            }
-        }
-        int[] res = new int[ans.size()];
-        for (int i = 0; i < res.length; i++) res[i] = ans.get(i);
-        
         return res;
-
     }
-
+     public static void Sort(int[] a) {
+        List<Integer> l = new ArrayList<>();
+        for (int i : a) l.add(i);
+        Collections.sort(l);
+        for (int i = 0; i < a.length; i++) a[i] = l.get(i);
+    }
 
 }
