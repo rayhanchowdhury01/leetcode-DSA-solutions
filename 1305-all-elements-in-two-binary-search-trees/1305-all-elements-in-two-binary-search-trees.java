@@ -14,20 +14,21 @@
  * }
  */
 class Solution {
+    PriorityQueue<Integer> pq = new PriorityQueue<>();
+    
     public List<Integer> getAllElements(TreeNode root1, TreeNode root2) {
-        PriorityQueue<Integer> pq = new PriorityQueue<>();
         List<Integer> res = new ArrayList<>();
-        Inorder(root1, pq);
-        Inorder(root2, pq);
+        Inorder(root1);
+        Inorder(root2);
         while (!pq.isEmpty()) res.add(pq.poll());
         return res;
     }
 
-    public static void Inorder(TreeNode tree, PriorityQueue<Integer> pq) {
+    public void Inorder(TreeNode tree) {
         if (tree != null) {
-            Inorder(tree.left, pq);
+            Inorder(tree.left);
             pq.offer(tree.val);
-            Inorder(tree.right, pq);
+            Inorder(tree.right);
         }
     }
 }
